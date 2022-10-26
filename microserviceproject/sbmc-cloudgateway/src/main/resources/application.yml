@@ -1,0 +1,21 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: stock-Api
+        uri: lb://stock-Api
+        predicates:
+          - Path=/getStocksPriceByName/{name}
+      - id: stock-cal
+        uri: lb://stock-cal
+        predicates:
+          - Path=/gettotal/{stockName}/{Quntity}
+          
+          
+  application:
+    name: cloud-gateway
+    
+server:
+  port: 3333
+         
